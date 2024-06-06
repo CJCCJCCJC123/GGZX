@@ -1,0 +1,20 @@
+import { createApp } from "vue";
+import "./style.css";
+//@ts-ignore
+import App from "@/App.vue";
+import "virtual:svg-icons-register";
+import components from "@/components";
+import "@/style/index.scss";
+import { router } from "@/router/index.ts";
+import pinia from "@/store/index.ts";
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+import "@/utils/man.ts";
+import "element-plus/theme-chalk/dark/css-vars.css";
+import isHasButton from "@/directives/has.ts";
+const app = createApp(App);
+app.use(components);
+app.use(router);
+pinia.use(piniaPluginPersistedstate);
+app.use(pinia);
+isHasButton(app);
+app.mount("#app");
